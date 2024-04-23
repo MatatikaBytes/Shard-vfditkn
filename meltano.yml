@@ -1,7 +1,42 @@
 version: 1
 default_environment: dev
-project_id: cd697933-c583-4f88-98a8-70cce08ce16e
+project_id: 36f7e7bc-52c2-4ddc-8397-6fc01539d223
 environments:
 - name: dev
 - name: staging
 - name: prod
+plugins:
+  extractors:
+  - name: tap-beautifulsoup
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-beautifulsoup.git
+    config:
+      source_name: meltano_sdk
+      site_url: https://sdk.meltano.com/en/latest/
+  loaders:
+  - name: target-postgres
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+  transformers:
+  - name: dbt
+    variant: dbt-labs
+    pip_url: "dbt-core~=1.3.0 dbt-postgres~=1.3.0 dbt-snowflake~=1.3.0\n"
+  files:
+  - name: files-dbt
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.1
+  utilities:
+  - name: gdrive
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/utility-gdrive.git@v0.2.0
+    config:
+      output_path: documents
+  - name: matatika
+    variant: matatika
+    pip_url: matatika~=1.16.0
+  - name: doc-converter
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/utility-doc-converter.git@feature/support-tap-output-files
+    config:
+      file_path: documents
+      output_dir: output

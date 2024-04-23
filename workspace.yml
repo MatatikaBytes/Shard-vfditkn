@@ -1,7 +1,12 @@
 version: workspaces/v0.1
-name: Shard
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
+  HOME_PAGE: explore
+  APP_MENU_ITEMS: '[{"name": "explore", "faIcon": "users", "label": "Questions"}]'
+  TOOLBAR_SEARCH_ALT_TEXT: Search all questions...
+  EXPLORE_PAGE_TITLE: Questions
+  FEATURE_QUESTIONS: true
+  QUESTIONS_LLM: gpt-3.5-turbo-16k
 default_data_store: Warehouse
 dataset_paths:
 - analyze/datasets

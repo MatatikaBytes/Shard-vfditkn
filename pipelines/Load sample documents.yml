@@ -1,0 +1,26 @@
+version: pipelines/v0.1
+name: Load sample documents
+timeout: 600
+data_components:
+  - doc-converter
+  - matatika
+script: |-
+  meltano install utility doc-converter
+  meltano install utility matatika
+
+  # system dependencies of doc-converter
+  apt-get update -y && apt-get install -y \
+    libgl1 \
+    ghostscript \
+    tesseract-ocr
+
+  # copy the local documents
+  cp -R sample_documents/* documents
+  meltano run doc-converter
+
+  set -e
+  shopt -s nullglob
+  shopt -s nocaseglob
+
+  export MATATIKA_CONTEXT_HOME=.matatika
+  meltano invoke matatika publish $DOC_CONVERTER_OUTPUT_DIR

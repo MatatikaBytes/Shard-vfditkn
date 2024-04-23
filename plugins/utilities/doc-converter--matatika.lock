@@ -1,0 +1,37 @@
+{
+  "plugin_type": "utilities",
+  "name": "doc-converter",
+  "namespace": "doc_converter",
+  "variant": "matatika",
+  "label": "Document converter",
+  "logo_url": "https://img.icons8.com/?size=512&id=vDJ4dnSWxyvG&format=png",
+  "pip_url": "git+https://github.com/Matatika/utility-doc-converter.git",
+  "description": "Utility for converting `.doc`, `.docx` and `.pdf` files into the Matatika dataset format.",
+  "settings": [
+    {
+      "name": "file_path",
+      "kind": "string",
+      "label": "File path",
+      "description": "File or directory path of the document(s) to convert (defaults to the current working directory)",
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "output_dir",
+      "kind": "string",
+      "label": "Output directory",
+      "description": "Directory where converted document(s) are output into (defaults to the parent directory for each document)",
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "source",
+      "kind": "string",
+      "label": "Source",
+      "value": "Documents",
+      "description": "Name of the source to group converted document(s) by",
+      "required": "false",
+      "protected": false
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "plugin_type": "utilities",
+  "name": "gdrive",
+  "namespace": "utility_gdrive",
+  "variant": "matatika",
+  "label": "Google Drive",
+  "docs": "https://www.matatika.com/data-details/gdrive/",
+  "pip_url": "git+https://github.com/Matatika/utility-gdrive.git@v0.2.0",
+  "description": "Google Drive is a cloud-based storage service that allows users to store, share, and collaborate on files and documents online.\n\nGoogle Drive is a file storage and synchronization service developed by Google that allows users to store files in the cloud, synchronize files across devices, and share files with others. It offers users 15 GB of free storage space, with the option to purchase additional storage if needed. Users can upload and access files from any device with an internet connection, and can collaborate on documents in real-time with others. Google Drive also includes a suite of productivity tools, such as Google Docs, Sheets, and Slides, which allow users to create and edit documents, spreadsheets, and presentations online. Additionally, Google Drive integrates with other Google services, such as Gmail and Google Photos, making it easy to attach files to emails or store photos and videos in the cloud.\n### Prerequisites\nTo obtain the GDrive File or Folder ID, you can navigate to the file or folder in Google Drive and copy the ID from the URL.\n\nTo obtain the OAuth identity provider authorization endpoint used to create and refresh tokens, you can refer to the Google Drive API documentation or the Google Cloud Console.\n\nTo obtain the OAuth scopes we need to request access to, you can refer to the Google Drive API documentation or the Google Cloud Console.\n\nTo obtain the Access Token, you need to first obtain an authorization code by redirecting the user to the authorization endpoint and then exchanging the authorization code for an access token using the token endpoint. The specific steps for obtaining an access token will depend on the programming language and libraries you are using.",
+  "logo_url": "https://app.matatika.com/assets/images/utility/gdrive.png",
+  "settings": [
+    {
+      "name": "file_id",
+      "kind": "string",
+      "label": "GDrive File or Folder ID",
+      "description": "The unique identifier for a file or folder in Google Drive.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "output_path",
+      "env": "GDRIVE_OUTPUT_PATH",
+      "kind": "string",
+      "label": "Output Path",
+      "description": "The path where the downloaded file will be saved.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "hidden",
+      "value": "https://oauth2.googleapis.com/token",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "description": "The endpoint used to authenticate and authorize access to the user's Google Drive account.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "hidden",
+      "value": "https://www.googleapis.com/auth/drive.readonly",
+      "label": "OAuth scopes we need to request access to",
+      "description": "The specific permissions that the application needs to access the user's Google Drive account.",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "hidden",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "description": "A function that will be called to refresh the access token using the refresh token.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "hidden",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "description": "An optional header that can be set on the request to refresh the access token.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_id",
+      "env": "GDRIVE_CLIENT_ID",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client ID used if refresh_proxy_url not supplied",
+      "description": "The client ID for the OAuth application used to authenticate the user.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_secret",
+      "env": "GDRIVE_CLIENT_SECRET",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client Secret used if refresh_proxy_url not supplied",
+      "description": "The client secret for the OAuth application used to authenticate the user.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "env": "GDRIVE_REFRESH_TOKEN",
+      "kind": "hidden",
+      "label": "OAuth Refresh Token",
+      "description": "A token used to refresh the access token when it expires.",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "env": "GDRIVE_ACCESS_TOKEN",
+      "kind": "hidden",
+      "label": "Access Token",
+      "description": "A token that grants access to the user's Google Drive account for a limited time.",
+      "protected": false,
+      "required": "true"
+    }
+  ],
+  "commands": {
+    "run": {
+      "args": "$GDRIVE_FILE_ID",
+      "description": "Run utility-gdrive to download file or folder of files."
+    }
+  }
+}
