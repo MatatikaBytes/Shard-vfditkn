@@ -2,6 +2,27 @@ version: pipelines/v0.1
 name: Wikipedia - Shard
 timeout: 0
 max_retries: 0
+script: |-
+  meltano install extractor tap-beautifulsoup
+  meltano install utility doc-converter
+  meltano install utility matatika
+
+  # system dependencies of doc-converter
+  apt-get update -y && apt-get install -y \
+    libgl1 \
+    ghostscript \
+    tesseract-ocr
+
+  meltano invoke tap-beautifulsoup > documents/tap-beautifulsoup.out
+  meltano run doc-converter
+
+  set -e
+  shopt -s nullglob
+  shopt -s nocaseglob
+
+  export MATATIKA_CONTEXT_HOME=.matatika
+  meltano invoke matatika publish $DOC_CONVERTER_OUTPUT_DIR
 data_components:
 - tap-beautifulsoup
 - doc-converter
+- matatika
