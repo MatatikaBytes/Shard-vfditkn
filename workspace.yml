@@ -1,12 +1,31 @@
 version: workspaces/v0.1
+name: Shard
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
-  HOME_PAGE: explore
-  APP_MENU_ITEMS: '[{"name": "explore", "faIcon": "users", "label": "Questions"}]'
-  TOOLBAR_SEARCH_ALT_TEXT: Search all questions...
-  EXPLORE_PAGE_TITLE: Questions
+  HOME_PAGE: library
+  APP_MENU_ITEMS: '[{"name": "library", "faIcon": "list", "label": "Property"}, {"name": "explore", "faIcon": "hashtag", "label": "Explore"}]'
+  TOOLBAR_SEARCH_ALT_TEXT: Search all property...
+  LIBRARY_PAGE_TITLE: Property
+  LIBRARY_LIST_INFO_ITEM_TEXT: Property(s)
+  EXPLORE_PAGE_TITLE: Explore
   FEATURE_QUESTIONS: true
-  QUESTIONS_LLM: gpt-3.5-turbo-16k
+  QUESTIONS_LLM: amazon.titan-text-express-v1
+  DATASET_WATCH_ALERTS_ALT_TEXT: Select to receive summary of future property updates
+  DATASET_WATCH_ALL_ACTIVITY_ALT_TEXT: Select to receive updates and discussion notes added to this property
+  DATASET_ASSISTANT_TAB_ALERTS_ALT_TEXT: Planning Alerts
+  DATASET_ASSISTANT_NO_ALERTS_ALT_TEXT: No updates.
+  NEWS_DATASET_ALERT_ALT_TEXT: Planning update
+  HELP_DATASET_ALIAS: analyze/datasets/plans
+  TOOLBAR_SEARCH_ALT_TEXT: Search all properties by name, description or address...
+  WELCOME_DATASET_ALIAS: analyze/datasets/welcome
+  WELCOME_MESSAGE: Welcome to the Planning Hub
+  MENU_ITEM_HOME_ALT_TEXT: My Feed
+  MENU_ITEM_CHANNELS_ALT_TEXT: Lists
+  ALERTS_HELP_TEXT: |-
+    Planning applications affecting this property.
+  DISCUSSION_HELP_TEXT: Insights and discussion on this property
+  RELATED_HELP_TEXT: Surrounding properties related to your selected property
+  DATASET_VIEW_TAB_ORDER: alerts, discussion, related
 default_data_store: Warehouse
 dataset_paths:
 - analyze/datasets
