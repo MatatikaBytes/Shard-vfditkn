@@ -1,10 +1,7 @@
 version: pipelines/v0.1
-name: Load GDrive documents
+name: Load gdrive documents
 timeout: 600
-data_components:
-  - gdrive
-  - doc-converter
-  - matatika
+max_retries: 0
 script: |-
   meltano install utility gdrive
   meltano install utility doc-converter
@@ -24,3 +21,7 @@ script: |-
 
   export MATATIKA_CONTEXT_HOME=.matatika
   meltano invoke matatika publish $DOC_CONVERTER_OUTPUT_DIR
+data_components:
+- gdrive
+- doc-converter
+- matatika

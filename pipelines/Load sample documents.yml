@@ -1,9 +1,7 @@
 version: pipelines/v0.1
 name: Load sample documents
 timeout: 600
-data_components:
-  - doc-converter
-  - matatika
+max_retries: 0
 script: |-
   meltano install utility doc-converter
   meltano install utility matatika
@@ -24,3 +22,6 @@ script: |-
 
   export MATATIKA_CONTEXT_HOME=.matatika
   meltano invoke matatika publish $DOC_CONVERTER_OUTPUT_DIR
+data_components:
+- doc-converter
+- matatika

@@ -1,10 +1,7 @@
 version: pipelines/v0.1
 name: Load website content
 timeout: 600
-data_components:
-- tap-beautifulsoup
-- doc-converter
-- matatika
+max_retries: 0
 script: |-
   meltano install extractor tap-beautifulsoup
   meltano install utility doc-converter
@@ -25,3 +22,7 @@ script: |-
 
   export MATATIKA_CONTEXT_HOME=.matatika
   meltano invoke matatika publish $DOC_CONVERTER_OUTPUT_DIR
+data_components:
+- tap-beautifulsoup
+- doc-converter
+- matatika
