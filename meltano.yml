@@ -13,6 +13,9 @@ plugins:
     config:
       source_name: meltano_sdk
       site_url: https://sdk.meltano.com/en/latest/
+  - name: tap-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.8.0
   loaders:
   - name: target-postgres
     variant: matatika
@@ -36,7 +39,8 @@ plugins:
     pip_url: matatika~=1.16.0
   - name: doc-converter
     variant: matatika
-    pip_url: git+https://github.com/Matatika/utility-doc-converter.git@feature/support-tap-output-files
+    pip_url: 
+      git+https://github.com/Matatika/utility-doc-converter.git@feature/support-tap-output-files
     config:
       file_path: documents
       output_dir: output
