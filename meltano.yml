@@ -16,10 +16,17 @@ plugins:
   - name: tap-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-googleads.git@v0.8.0
+  - name: tap-google-sheets
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.4.0
   loaders:
   - name: target-postgres
     variant: matatika
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+  transforms:
+  - name: dbt-googleads
+    variant: matatika
+    pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.5.0
   transformers:
   - name: dbt
     variant: dbt-labs
@@ -28,6 +35,9 @@ plugins:
   - name: files-dbt
     variant: matatika
     pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.1
+  - name: analyze-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
   utilities:
   - name: gdrive
     variant: matatika
@@ -44,3 +54,6 @@ plugins:
     config:
       file_path: documents
       output_dir: output
+  - name: dbt-artifacts
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
